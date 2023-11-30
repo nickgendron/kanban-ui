@@ -24,8 +24,8 @@ export default function UserBadge({ userIn }) {
     imageUri: "https://i.pravatar.cc/300",
   };
   return (
-    <div className="w-fit h-1/4 bg-white rounded-xl shadow-lg p-5 mb-4 mr-4 justify-end">
-      <div className="w-fit h-1/4 flex flex-row space-x-4 border">
+    <div className="w-fit h-fit bg-white rounded-xl shadow-lg p-5 mb-4 mr-4 justify-end">
+      <div className="w-fit h-1/4 flex flex-row space-x-4">
         <div className="">
           <img
             src={user.imageUri}
@@ -33,9 +33,8 @@ export default function UserBadge({ userIn }) {
             alt="user avatar"
           />
         </div>
-        <div className="border">
+        <div>
           <div className="">
-            {/* <h1 className="font-bold text-xl">{user.firstName}</h1> */}
             <h1 className="font-bold text-xl">
               {userIn.firstName} {userIn.lastName}{" "}
             </h1>
@@ -43,9 +42,6 @@ export default function UserBadge({ userIn }) {
           <br />
           <h2>{user.jobTitle}</h2>
           <div className="flex flex-row justify-evenly ">
-            {/* <p>email</p>
-          <p>IM</p>
-          <p>email</p> */}
           </div>
         </div>
       </div>

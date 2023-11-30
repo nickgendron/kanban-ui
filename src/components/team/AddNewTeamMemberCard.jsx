@@ -43,11 +43,17 @@ export default function NewTeamMemberCard() {
   };
   return (
     <>
-      <div
-        className=" ml-4 flex flex-row space-x-4  rounded-xl shadow-lg p-5 cursor-pointer"
-        onClick={() => setDisplayModal(true)}
-      >
-        <h1>Add new</h1>
+     <div className="bg-white rounded-xl shadow-lg p-3 mb-4 ">
+        <div
+          className="bg-blue-100 rounded-xl shadow-lg border  h-full cursor-pointer text-center items-center justify-center flex "
+          onClick={() => setDisplayModal(true)}
+        >
+          <div className="flex flex-row items-center space-x-3">
+            <h1 className="text-gray-600 text-2xl">&#8853;</h1>
+            <h1 className="text-gray-600 font-bold">Add New Team Member</h1>
+
+          </div>
+        </div>
       </div>
       {displayModal && (
         <Model onOutsideClick={() => setDisplayModal(false)}>
@@ -120,7 +126,7 @@ export default function NewTeamMemberCard() {
                     onClick={handleSubmit}
                     className=" bg-blue-500 h-10 rounded-lg mt-6 w-full font-bold"
                   >
-                    Create Team
+                    Create Teammate
                   </button>
                 </div>
               </form>

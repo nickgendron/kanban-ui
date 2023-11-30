@@ -58,7 +58,7 @@ export default function KanbanBoard() {
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
   const [activeColumnId, setActiveColumnId] = useState(null);
-
+const [newColumnName, setNewColumnName] = useState("");
   useEffect(() => {
     if (data) {
       setColumns(data.columns);
@@ -152,135 +152,141 @@ export default function KanbanBoard() {
 
   return (
     <>
-      <TopBar />
-      <div className="flex ">
-        <button onClick={() => handleNewColumn("test")}>Reset</button>
-        <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
-          {Object.entries(boardColumns).map(([columnId, column]) => {
-            return (
-              <div key={columnId} className=" ml-4 mt-6 ">
-                <div className={`  pl-3 pt-4 pr-3 border  rounded-lg`}>
-                  <div className="flex justify-between pl-8 items-center">
-                    <h2 className="dark:text-Primary underline font-bold text-2xl pb-4">
-                      {column.name}
-                    </h2>
-                    <div className="flex justify-end relative ">
-                      <Menu
-                        menuButton={
-                          <MenuButton>&#x2022; &#x2022; &#x2022;</MenuButton>
-                        }
-                        transition
-                      >
-                        <MenuItem>Rename Column</MenuItem>
-                        <MenuItem
-                          onClick={() => {
-                            handleDeleteColumn(columnId);
-                          }}
+      <div className=" flex-col">
+        {/* <TopBar /> */}
+        <div className="flex h-1/2">
+          <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+            {Object.entries(boardColumns).map(([columnId, column]) => {
+              return (
+                <div key={columnId} className=" ml-4 mt-6 border h-1/2">
+                  <div className={`  pl-3 pt-4 pr-3 border  rounded-lg`}>
+                    <div className="flex justify-between pl-8 items-center">
+                      <h2 className="dark:text-Primary underline font-bold text-2xl pb-4">
+                        {column.name}
+                      </h2>
+                      <div className="flex justify-end relative ">
+                        <Menu
+                          menuButton={
+                            <MenuButton>&#x2022; &#x2022; &#x2022;</MenuButton>
+                          }
+                          transition
                         >
-                          <h1 className="text-red-500">Delete column</h1>
-                        </MenuItem>
-                      </Menu>
+                          <MenuItem>Rename Column</MenuItem>
+                          <MenuItem
+                            onClick={() => {
+                              handleDeleteColumn(columnId);
+                            }}
+                          >
+                            <h1 className="text-red-500">Delete column</h1>
+                          </MenuItem>
+                        </Menu>
+                      </div>
+                    </div>
+                    <Droppable droppableId={columnId} key={columnId}>
+                      {(provided, snapshot) => {
+                        const droppableHeight = snapshot.isDraggingOver
+                          ? Math.min(300 + 50, window.innerHeight * 0.8)
+                          : 200;
+
+                        return (
+                          <div
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}
+                            className={`overflow-y-auto overflow-x-hidden scroll-utilities pl-6 pb-4  ${
+                              snapshot.isDraggingOver
+                                ? "bg-gray-200 h-${}[droppableHeight]"
+                                : ""
+                            }`}
+                            style={{
+                              transition: "height 3.0s linear",
+                              width: 350,
+                              maxHeight: "74vh",
+                              minHeight: droppableHeight,
+                            }}
+                          >
+                            {column.cards.map((item, index) => {
+                              return (
+                                <Draggable
+                                  key={item.cardId}
+                                  draggableId={item.cardId}
+                                  index={index}
+                                >
+                                  {(provided) => {
+                                    return (
+                                      <div
+                                        ref={provided.innerRef}
+                                        {...provided.draggableProps}
+                                        {...provided.dragHandleProps}
+                                        style={{
+                                          ...provided.draggableProps.style,
+                                        }}
+                                        className="dark:bg-BG_Secondary bg-white mr-6 p-4 mt-4 rounded-xl border overflow-visible drop-shadow-md hover:border-2"
+                                        onClick={() => {
+                                          setActiveCard(item);
+                                          setShowEditTaskModal(true);
+                                        }}
+                                      >
+                                        <h1 className="dark:text-Text_Primary text-xl text-black">
+                                          {item.cardTitle}
+                                        </h1>
+
+                                        <br />
+                                        <p className="text-Text_Secondary">
+                                          {item.cardDescription}
+                                        </p>
+                                      </div>
+                                    );
+                                  }}
+                                </Draggable>
+                              );
+                            })}
+                            {provided.placeholder}
+                          </div>
+                        );
+                      }}
+                    </Droppable>
+                    <div
+                      className="mb-3 border flex cursor-pointer justify-center pb-2 pt-2 hover:bg-blue-200 hover:shadow-lg hover:border hover:dark:bg-BG_Secondary rounded-md"
+                      onClick={() => {
+                        console.log(columnId);
+                        setActiveColumnId(columnId);
+                        setShowNewTaskModal(true);
+                      }}
+                    >
+                      <h1 className="dark:text-white">Add new task</h1>
                     </div>
                   </div>
-                  <Droppable droppableId={columnId} key={columnId}>
-                    {(provided, snapshot) => {
-                      const droppableHeight = snapshot.isDraggingOver
-                        ? Math.min(300 + 50, window.innerHeight * 0.8)
-                        : 200;
-
-                      return (
-                        <div
-                          {...provided.droppableProps}
-                          ref={provided.innerRef}
-                          className={`overflow-y-auto overflow-x-hidden scroll-utilities pl-6 pb-4  ${
-                            snapshot.isDraggingOver
-                              ? "bg-gray-200 h-${}[droppableHeight]"
-                              : ""
-                          }`}
-                          style={{
-                            transition: "height 3.0s linear",
-                            width: 350,
-                            maxHeight: "74vh",
-                            minHeight: droppableHeight,
-                          }}
-                        >
-                          {column.cards.map((item, index) => {
-                            return (
-                              <Draggable
-                                key={item.cardId}
-                                draggableId={item.cardId}
-                                index={index}
-                              >
-                                {(provided) => {
-                                  return (
-                                    <div
-                                      ref={provided.innerRef}
-                                      {...provided.draggableProps}
-                                      {...provided.dragHandleProps}
-                                      style={{
-                                        ...provided.draggableProps.style,
-                                      }}
-                                      className="dark:bg-BG_Secondary bg-white mr-6 p-4 mt-4 rounded-xl border overflow-visible drop-shadow-md hover:border-2"
-                                      onClick={() => {
-                                        setActiveCard(item);
-                                        setShowEditTaskModal(true);
-                                      }}
-                                    >
-                                      <h1 className="dark:text-Text_Primary text-xl text-black">
-                                        {item.cardTitle}
-                                      </h1>
-
-                                      <br />
-                                      <p className="text-Text_Secondary">
-                                        {item.cardDescription}
-                                      </p>
-                                    </div>
-                                  );
-                                }}
-                              </Draggable>
-                            );
-                          })}
-                          {provided.placeholder}
-                        </div>
-                      );
-                    }}
-                  </Droppable>
-                  <div
-                    className="mb-3 border flex cursor-pointer justify-center pb-2 pt-2 hover:bg-blue-200 hover:shadow-lg hover:border hover:dark:bg-BG_Secondary rounded-md"
-                    onClick={() => {
-                      console.log(columnId);
-                      setActiveColumnId(columnId);
-                      setShowNewTaskModal(true);
-                    }}
-                  >
-                    <h1 className="dark:text-white">Add new task</h1>
-                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </DragDropContext>
-        <div>
-          {showEditModal && (
-            <EditWorkItemModal
-              item={activeCard}
-              onUpdate={handleCardUpdate}
-              onOutsideClick={() => setShowEditTaskModal(false)}
-            />
-          )}
-          {showNewTaskModal && (
-            <ModalContent
-              columnId={activeColumnId}
-              onSave={handleNewCard}
-              onOutsideClick={() => setShowNewTaskModal(false)}
-            />
-          )}
+              );
+            })}
+          </DragDropContext>
+          <div>
+            {showEditModal && (
+              <EditWorkItemModal
+                item={activeCard}
+                onUpdate={handleCardUpdate}
+                onOutsideClick={() => setShowEditTaskModal(false)}
+              />
+            )}
+            {showNewTaskModal && (
+              <ModalContent
+                columnId={activeColumnId}
+                onSave={handleNewCard}
+                onOutsideClick={() => setShowNewTaskModal(false)}
+              />
+            )}
+          </div>
+          <div>{/* <DatePicker /> */}</div>
         </div>
-        <div>{/* <DatePicker /> */}</div>
-        
-      </div>
-      <div className="flex justify-center pt-10">
-        <h1>here</h1>
+        <div className="flex space-x-5 justify-center pt-10">
+          <input
+            type="text"
+            placeholder="Type here"
+            className="input input-bordered w-full max-w-xs"
+            onBlur={(e) => setNewColumnName(e.target.value)}
+          />
+          <button className="btn" onClick={() => handleNewColumn(newColumnName)}>Add Column</button>
+        </div>
       </div>
     </>
   );

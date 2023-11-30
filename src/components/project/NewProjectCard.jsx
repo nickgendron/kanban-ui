@@ -57,7 +57,7 @@ export default function AddNewTeamBadge() {
       </div>
       {displayModal && (
         <Model onOutsideClick={() => setDisplayModal(false)}>
-          <div className="bg-white shadow-xl w-1/3 h-1/3 rounded-xl ">
+          <div className="bg-white shadow-xl w-1/3 h-1/2 rounded-xl ">
             <div className="m-10 ">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
                 Create a new project
@@ -109,7 +109,7 @@ export default function AddNewTeamBadge() {
                     onClick={handleSubmit}
                     className=" bg-blue-500 h-10 rounded-lg mt-6 w-full font-bold"
                   >
-                    Create project
+                    Create Project
                   </button>
                 </div>
               </form>

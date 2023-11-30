@@ -33,18 +33,24 @@ export default function TeamPage() {
   console.log(teamMembers.teamMembers);
   return (
     <div>
-      <TopBar />
-      <div className="p-4">
-        <div className="flex flex-row">
-          <h1 className="text-bold font-bold text-5xl">Team Members</h1>
-            <AddNewTeamMemberCard />
+      {/* <TopBar /> */}
+      <h1 className="text-bold font-bold text-5xl pt-4">Team Members</h1>
+
+      <div className="grid justify-items-center gap-4 ">
+        {/* <TopBar /> */}
+        <div className="p-4">
+          <div className="flex flex-row">
+            <h1 className="text-bold font-bold text-5xl">Team Members</h1>
           </div>
         </div>
-        <div className="flex flex-wrap spacey-4">
+        <div className="pt-2 grid grid-cols-3 gap-4 ">
+          {" "}
           {teamMembers.map((member, index) => (
             <UserBadge key={index} userIn={member} />
           ))}{" "}
+          <AddNewTeamMemberCard />
         </div>
       </div>
+    </div>
   );
 }

@@ -16,7 +16,7 @@ const TeamBadge = ({ team }) => {
     dispatch(setActiveTeam(team.teamId));
     navigate("/team");
   };
-
+ 
   const handleDeleteTeam = () => {
     deleteTeam({ teamId: team.teamId });
   };
