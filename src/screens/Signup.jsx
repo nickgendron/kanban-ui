@@ -92,7 +92,7 @@ const Signup = () => {
       KanbanApi.signup(payload)
         .then((res) => {
           console.log(res);
-          sessionStorage.setItem("accessToken", res.accessToken);
+          // sessionStorage.setItem("accessToken", res.accessToken);
 
           navigate("/")
         })

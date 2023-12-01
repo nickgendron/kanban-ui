@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+@media (prefers-color-scheme: light){
+  html {
+    color-scheme: light;
+  }
+}
 .scroll-utilities::-webkit-scrollbar {
   width: 3.5px;
   padding: 10px;

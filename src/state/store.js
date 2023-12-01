@@ -10,7 +10,7 @@ import showEditTaskSlice from "./ShowEditTaskModal/editTaskSlice";
 import activeBoardSlice from "./ActiveBoard/activeBoardSlice";
 import counterSliceReducer from "./counterSlice";
 import activeTeamSlice from "./ActiveTeam/activeTeamSlice";
-
+import userStateSlice from "./UserState/userStateSlice";
 // const peresistConfig = {
 //   key: "root",
 //   storage,
@@ -41,13 +41,14 @@ const rootReducer = combineReducers({
   activeTeam: activeTeamSlice,
   activeBoard: activeBoardSlice,
   counter: counterSliceReducer,
+  userState: userStateSlice,
 });
 
 // Configure persistence for the root reducer
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['activeBoard', 'activeTeam'], // List of slices to persist
+  whitelist: ['activeBoard', 'activeTeam', "userState"], // List of slices to persist
 };
 
 // Create the persisted reducer

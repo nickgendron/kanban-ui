@@ -43,7 +43,7 @@ export default function NewTeamMemberCard() {
   };
   return (
     <>
-     <div className="bg-white rounded-xl shadow-lg p-3 mb-4 ">
+     <div className="bg-white rounded-xl shadow-lg p-3 mb-4 h-58">
         <div
           className="bg-blue-100 rounded-xl shadow-lg border  h-full cursor-pointer text-center items-center justify-center flex "
           onClick={() => setDisplayModal(true)}

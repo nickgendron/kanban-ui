@@ -57,9 +57,9 @@ export default function AddNewTeamBadge() {
       </div>
       {displayModal && (
         <Model onOutsideClick={() => setDisplayModal(false)}>
-          <div className="bg-white shadow-xl w-1/3 h-1/2 rounded-xl ">
+          <div className="bg-white shadow-xl w-1/3 h-fit rounded-xl ">
             <div className="m-10 ">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-center pb-6">
                 Create a new project
               </h1>
               <form className="items-center">

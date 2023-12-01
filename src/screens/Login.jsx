@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { KanbanApi } from "../api/ApiHandler";
 import { kanbanApi } from "../api/ApiInstance";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAuthenticated } from "../state/UserState/userStateSlice";
 import axios from "axios";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   function handleLoginAction(e) {
     e.preventDefault();
@@ -25,9 +27,9 @@ export default function Login() {
         // kanbanApi.defaults.headers.common[
         //   "Authorization"
         // ] = `bearer ${res.accessToken}`;
-        sessionStorage.setItem("accessToken", res.accessToken);
-        console.log(res.accessToken);
-
+        // sessionStorage.setItem("accessToken", res.accessToken);
+        // console.log(res.accessToken);
+        dispatch(setAuthenticated(true));
         navigate("/");
       })
       .catch((err) => console.log(err));
