@@ -24,11 +24,8 @@ export default function Login() {
     KanbanApi.login(payload)
       .then((res) => {
         console.log(res);
-        // kanbanApi.defaults.headers.common[
-        //   "Authorization"
-        // ] = `bearer ${res.accessToken}`;
-        // sessionStorage.setItem("accessToken", res.accessToken);
-        // console.log(res.accessToken);
+
+        
         dispatch(setAuthenticated(true));
         navigate("/");
       })
