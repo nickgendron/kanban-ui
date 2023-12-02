@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:5093";
+const baseUrl = "https://kiblbackendfinal.azurewebsites.net";
 export const kanbanApi = axios.create({
   baseURL: baseUrl,
   withCredentials: true,
