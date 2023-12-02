@@ -24,16 +24,7 @@ import Login from "./src/screens/Login.jsx";
 import Signup from "./src/screens/Signup.jsx";
 import TeamPage from "./src/screens/TeamPage.jsx";
 import KanbanBoardPage from "./src/screens/KanbanBoardPage.jsx";
-// const PrivateRoutes = (children) => {
-//   const authenticated = useSelector((state) => state.userState.authenticated);
-//   return authenticated ? (
-//     <>
-//       {children}
-//       <Outlet />{" "}
-//     </>
-//   ) : (
-//     <Navigate to="/login" />
-//   );
-// };
+
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
