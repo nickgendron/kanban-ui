@@ -29,7 +29,7 @@ const axiosBaseQuery =
 export const kanbanReduxApi = createApi({
   reducerPath: "kanbanReduxApi",
   baseQuery: axiosBaseQuery({
-    baseUrl: "https://kiblbackendfinal.azurewebsites.net/",
+    baseUrl: "https://kanbanbackendpleasework.azurewebsites.net/",
   }),
   tagTypes: ["Board", "AllBoards", "AllTeams", "ActiveTeam"],
   endpoints(builder) {
