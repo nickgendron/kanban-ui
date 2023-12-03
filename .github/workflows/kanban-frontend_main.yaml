@@ -33,8 +33,9 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
+          npm run postbuild
          # Other scripts if configured should be added here, such as linting, formating
-
+ 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
