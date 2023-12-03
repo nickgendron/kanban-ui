@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PasswordChecklist from "react-password-checklist";
 import { useNavigate } from "react-router-dom";
 import { KanbanApi } from "../api/ApiHandler";
+import { useDispatch } from "react-redux";
+import { setAuthenticated } from "../state/UserState/userStateSlice";
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -10,7 +12,7 @@ const Signup = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [renderPasswordChecklist, setRenderPasswordChecklist] = useState(false);
   const [isPasswordValid, setPasswordChecklist] = useState(false);
-
+  const dispatch = useDispatch(); 
   const navigate = useNavigate();
 
   function PasswordChecker() {
@@ -21,7 +23,7 @@ const Signup = () => {
           minLength={5}
           iconSize={20}
           value={password || ""}
-          valueAgain={passwordCheck || ""} 
+          valueAgain={passwordCheck || ""}
           messages={{
             minLength: "password must be at least 8 characters.",
             specialChar: "password must contain 1 special character.",
@@ -47,7 +49,6 @@ const Signup = () => {
     const value = e.target.value;
     //validateEmail(value);
     setEmail(e.target.value);
-    
   }
 
   function validateEmail(email) {
@@ -64,7 +65,7 @@ const Signup = () => {
     e.persist();
     const value = e.target.value;
     setPassword(value);
-    
+
     if (value.length > 0) {
       setRenderPasswordChecklist(true);
     }
@@ -94,7 +95,9 @@ const Signup = () => {
           console.log(res);
           // sessionStorage.setItem("accessToken", res.accessToken);
 
-          navigate("/")
+          dispatch(setAuthenticated(true));
+          navigate("/");
+          navigate("/");
         })
         .catch((err) => console.log(err));
       //router.push("/");
