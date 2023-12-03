@@ -47,7 +47,7 @@ const Signup = () => {
     const value = e.target.value;
     //validateEmail(value);
     setEmail(e.target.value);
-    console.log(email);
+    
   }
 
   function validateEmail(email) {
@@ -64,7 +64,7 @@ const Signup = () => {
     e.persist();
     const value = e.target.value;
     setPassword(value);
-    console.log(value);
+    
     if (value.length > 0) {
       setRenderPasswordChecklist(true);
     }
@@ -78,10 +78,10 @@ const Signup = () => {
     e.preventDefault();
 
     if (isPasswordValid) {
-      console.log(firstName);
-      console.log(lastName);
-      console.log(email);
-      console.log(password);
+      
+      
+      
+      
 
       const payload = {
         firstName: firstName,
@@ -91,15 +91,15 @@ const Signup = () => {
       };
       KanbanApi.signup(payload)
         .then((res) => {
-          console.log(res);
+          
           // sessionStorage.setItem("accessToken", res.accessToken);
 
           navigate("/")
         })
-        .catch((err) => console.log(err));
+        .catch((err) => 
       //router.push("/");
     } else {
-      console.log("Password does not meet requirements");
+      
     }
   }
 

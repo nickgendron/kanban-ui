@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import {useDeleteCardMutation} from "../../api/ReduxApiHandler";
+import { useDeleteCardMutation } from "../../api/ReduxApiHandler";
 const EditWorkItemModal = ({ item, onUpdate, onOutsideClick }) => {
   // const item = useSelector((state) => state.activeCard.card);
   const [newTitle, setNewTitle] = useState(item.cardTitle);
@@ -9,8 +9,7 @@ const EditWorkItemModal = ({ item, onUpdate, onOutsideClick }) => {
 
   const [deleteCard] = useDeleteCardMutation();
   const activeBoard = useSelector((state) => state.activeBoard.boardId);
-  console.log(activeBoard);
-  console.log(item);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -46,10 +45,7 @@ const EditWorkItemModal = ({ item, onUpdate, onOutsideClick }) => {
                 <h1 className="text-2xl dark:text-Primary font-semibold text-black">
                   Task Information
                 </h1>
-                <div
-                  className=" cursor-pointer"
-                  onClick={handleDeleteCard}
-                >
+                <div className=" cursor-pointer" onClick={handleDeleteCard}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"

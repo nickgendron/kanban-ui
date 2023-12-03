@@ -43,7 +43,6 @@ const AddColumnForm = (addNewColumn) => {
 export default function KanbanBoard() {
   const activeBoard = useSelector((state) => state.activeBoard.boardId);
 
-  console.log(activeBoard);
   const { isLoading, data, isError, error } =
     useGetActiveBoardQuery(activeBoard);
   const [updateBoard] = useUpdateBoardMutation();
@@ -58,16 +57,14 @@ export default function KanbanBoard() {
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
   const [activeColumnId, setActiveColumnId] = useState(null);
-const [newColumnName, setNewColumnName] = useState("");
+  const [newColumnName, setNewColumnName] = useState("");
   useEffect(() => {
     if (data) {
       setColumns(data.columns);
-      console.log(data);
     }
   }, [data]);
 
   useEffect(() => {
-    console.log("columns update triggered");
     const updatedBoard = {
       ...data,
       columns: boardColumns,
@@ -248,7 +245,6 @@ const [newColumnName, setNewColumnName] = useState("");
                     <div
                       className="mb-3 border flex cursor-pointer justify-center pb-2 pt-2 hover:bg-blue-200 hover:shadow-lg hover:border hover:dark:bg-BG_Secondary rounded-md"
                       onClick={() => {
-                        console.log(columnId);
                         setActiveColumnId(columnId);
                         setShowNewTaskModal(true);
                       }}
@@ -285,7 +281,12 @@ const [newColumnName, setNewColumnName] = useState("");
             className="input input-bordered w-full max-w-xs"
             onBlur={(e) => setNewColumnName(e.target.value)}
           />
-          <button className="btn" onClick={() => handleNewColumn(newColumnName)}>Add Column</button>
+          <button
+            className="btn"
+            onClick={() => handleNewColumn(newColumnName)}
+          >
+            Add Column
+          </button>
         </div>
       </div>
     </>

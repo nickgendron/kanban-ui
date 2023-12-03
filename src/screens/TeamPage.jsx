@@ -12,7 +12,7 @@ export default function TeamPage() {
   const team = location.state?.team;
 
   const activeTeamId = useSelector((state) => state.activeTeam.team);
-  console.log(activeTeamId);
+
   const { isLoading, data, isError, error } = useGetTeamQuery(activeTeamId);
   const [teamMembers, setTeamMembers] = useState([]);
 
@@ -22,15 +22,12 @@ export default function TeamPage() {
     if (data) {
       const tmp = data.teamMembers;
 
-      console.log(tmp);
       setTeamMembers(data.teamMembers);
-      console.log(teamMembers);
     }
   }, [data]);
 
   if (isLoading) return <div>Loading...</div>;
 
-  console.log(teamMembers.teamMembers);
   return (
     <div>
       {/* <TopBar /> */}

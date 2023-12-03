@@ -9,10 +9,8 @@ const activeTeamSlice = createSlice({
   initialState,
   reducers: {
     setActiveTeam: (state, action) => {
-        console.log("here")
-        // console.log("setActiveCard", action.payload);
+      //
       state.team = action.payload;
-      console.log(state.team)
     },
     removeActiveTeam: (state) => {
       state.team = null;
@@ -20,9 +18,7 @@ const activeTeamSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, () => {
-        console.log("incrementAsync.pending");
-      })
+      .addCase(incrementAsync.pending, () => {})
       .addCase(incrementAsync.fulfilled, (state, action) => {
         state.team += action.payload;
       });

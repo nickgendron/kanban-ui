@@ -58,6 +58,5 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(kanbanReduxApi.middleware),
-  devTools: true,
 });
 export const persistor = persistStore(store);

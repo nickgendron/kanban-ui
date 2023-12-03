@@ -9,8 +9,8 @@ const activeCardSlice = createSlice({
   initialState,
   reducers: {
     setActiveCard: (state, action) => {
-        // console.log("here")
-        // console.log("setActiveCard", action.payload);
+      //
+      //
       state.card = action.payload;
     },
     removeActiveCard: (state) => {
@@ -19,9 +19,7 @@ const activeCardSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, () => {
-        console.log("incrementAsync.pending");
-      })
+      .addCase(incrementAsync.pending, () => {})
       .addCase(incrementAsync.fulfilled, (state, action) => {
         state.value += action.payload;
       });

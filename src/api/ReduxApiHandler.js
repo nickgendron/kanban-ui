@@ -4,7 +4,6 @@ import { kanbanApi } from "./ApiInstance.js";
 const axiosBaseQuery =
   ({ baseUrl } = { baseUrl: "" }) =>
   async ({ url, method, data, params, headers }) => {
-    console.log(data);
     try {
       const result = await kanbanApi({
         url: baseUrl + url,
@@ -13,7 +12,6 @@ const axiosBaseQuery =
         params,
         headers,
       });
-      console.log("here");
       return { data: result.data };
     } catch (axiosError) {
       const err = axiosError;

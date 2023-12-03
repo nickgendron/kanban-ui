@@ -13,12 +13,9 @@ const ProjectBadge = ({ project }) => {
 
   const [deleteTeamBoard] = useDeleteTeamBoardMutation();
 
-  console.log(project);
-
   const handleDeleteProject = () => {
-    deleteTeamBoard({boardId: project.boardId, teamId: project.teamId});
-  
-  }
+    deleteTeamBoard({ boardId: project.boardId, teamId: project.teamId });
+  };
   const handleLinkClick = async () => {
     try {
       dispatch(setActiveBoard(project.boardId));

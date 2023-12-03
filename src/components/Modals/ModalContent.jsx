@@ -29,7 +29,7 @@ const ModalContent = ({ columnId, onSave, onOutsideClick }) => {
 
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
-  console.log(columnId);
+
   // const clearState = () => {
   //   setTaskTitle("");
   //   setTaskDescription("");
@@ -49,8 +49,7 @@ const ModalContent = ({ columnId, onSave, onOutsideClick }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(taskTitle);
-    console.log(taskDescription);
+
     const newCardId = uuid();
     const newCard = {
       cardId: newCardId,
@@ -60,14 +59,11 @@ const ModalContent = ({ columnId, onSave, onOutsideClick }) => {
     };
 
     onSave(newCard);
-    console.log(newCard);
   };
 
   return (
     <>
-      <Modal
-      onOutsideClick={onOutsideClick}
-      >
+      <Modal onOutsideClick={onOutsideClick}>
         <div
           className=" bg-gray-100 dark:bg-Dark  border-Text_Secondary p-6 rounded-3xl cursor-pointer"
           id="modal-wrapper"
@@ -101,7 +97,7 @@ const ModalContent = ({ columnId, onSave, onOutsideClick }) => {
                   required
                   onChange={(e) => setTaskDescription(e.target.value)}
                 ></textarea>
-               <button
+                <button
                   className="btn btn-block bg-blue-500 text-Text_White"
                   onClick={handleSubmit}
                 >

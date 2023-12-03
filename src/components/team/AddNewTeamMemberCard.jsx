@@ -12,7 +12,7 @@ export default function NewTeamMemberCard() {
 
   const activeTeamId = useSelector((state) => state.activeTeam.team);
 
-  const [addUser] = useAddUserToTeamMutation();  
+  const [addUser] = useAddUserToTeamMutation();
   const handleSubmit = (e) => {
     e.preventDefault();
     const trimmedEmail = memberEmail.trim();
@@ -29,7 +29,6 @@ export default function NewTeamMemberCard() {
         internalUserId: uuid(),
       },
     };
-    console.log(payload);
 
     addUser(payload);
 
@@ -39,11 +38,11 @@ export default function NewTeamMemberCard() {
     setMemberEmail("");
 
     setDisplayModal(false);
-    // console.log(res);
+    //
   };
   return (
     <>
-     <div className="bg-white rounded-xl shadow-lg p-3 mb-4 h-58">
+      <div className="bg-white rounded-xl shadow-lg p-3 mb-4 h-58">
         <div
           className="bg-blue-100 rounded-xl shadow-lg border  h-full cursor-pointer text-center items-center justify-center flex "
           onClick={() => setDisplayModal(true)}
@@ -51,7 +50,6 @@ export default function NewTeamMemberCard() {
           <div className="flex flex-row items-center space-x-3">
             <h1 className="text-gray-600 text-2xl">&#8853;</h1>
             <h1 className="text-gray-600 font-bold">Add New Team Member</h1>
-
           </div>
         </div>
       </div>

@@ -10,13 +10,12 @@ const activeBoardSlice = createSlice({
   initialState,
   reducers: {
     setActiveBoard: (state, action) => {
-      console.log(action.payload);
       state.boardId = action.payload;
       // sessionStorage.setItem("board", action.payload)
     },
     // updateColumnsInBoard: (state, action) => {
     //   state.board.columns = action.payload;
-    //   console.log(state.board.columns);
+    //
     // },
 
     // updateCardInBoard: (state, action) => {
@@ -45,21 +44,21 @@ const activeBoardSlice = createSlice({
     //       },
     //     },
     //   };
-    //   console.log(state.board);
+    //
     // },
     // addCardToColumn: (state, action) => {
-    //   console.log(action.payload);
+    //
     //   // const { containerId, newCard } = action.payload;
     //   const containerId = action.payload.containerId;
     //   const newCard = action.payload;
-    //   console.log(newCard);
+    //
     //   if (!state.board || !state.board.columns[containerId]) {
     //     return state;
     //   }
 
     //   const updatedColumns = { ...state.board.columns };
     //   const updatedCards = [...state.board.columns[containerId].cards, newCard];
-    //   console.log(updatedCards);
+    //
     //   state.board = {
     //     ...state.board,
     //     columns: {
@@ -70,11 +69,11 @@ const activeBoardSlice = createSlice({
     //       },
     //     },
     //   };
-    //   console.log(state.board);
+    //
     // },
     // addColumnToBoard: (state, action) => {
     //   const columnName = action.payload;
-    //   console.log(columnName);
+    //
     //   // Generate a new columnId
     //   const newColumnId = uuid();
 
@@ -89,7 +88,7 @@ const activeBoardSlice = createSlice({
     //     ...state.board.columns,
     //     [newColumnId]: newColumn,
     //   };
-    //   console.log(state.board.columns);
+    //
     // },
   },
 });

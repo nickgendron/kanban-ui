@@ -5,13 +5,10 @@ import { useGetBoardsQuery } from "../../api/ReduxApiHandler";
 
 export default function ProjectDisplay() {
   const { data, isLoading } = useGetBoardsQuery();
-  console.log(data);
 
   useEffect(() => {
     if (data) {
       const tmp = data;
-
-      console.log(tmp);
     }
   }, [data]);
 

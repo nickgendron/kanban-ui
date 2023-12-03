@@ -1,15 +1,12 @@
 import { kanbanApi } from "./ApiInstance.js";
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const KanbanApi = {
   async getRemoteAsset(endpoint, payload) {
     try {
-      console.log(payload)
       const response = await kanbanApi.get(endpoint, payload);
-      console.log(response)
+
       return response.data;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   },
   async postRemoteAsset(endpoint, payload) {
     try {
@@ -26,7 +23,6 @@ export const KanbanApi = {
       const cookies = response.headers;
 
       // Do something with the cookies
-      console.log(cookies);
 
       return response.data;
     } catch (error) {
@@ -44,19 +40,17 @@ export const KanbanApi = {
     }
   },
 
-
   async updateBoard(endpoint, payload) {
     try {
       const response = await kanbanApi.put(endpoint, payload);
-      console.log(response.data)
+
       return response.data;
     } catch (error) {
       console.error(error);
       throw error;
     }
-  }
+  },
 };
-
 
 // export const api = createApi({
 //   reducerPath: 'api',

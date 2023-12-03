@@ -16,7 +16,6 @@ export default function AddNewTeamBadge() {
       teamName: teamName,
       teamDescription: teamDescription,
     };
-    console.log(payload);
 
     addNewTeam(payload);
 
@@ -35,7 +34,6 @@ export default function AddNewTeamBadge() {
           <div className="flex flex-row items-center space-x-3">
             <h1 className="text-gray-600 text-2xl">&#8853;</h1>
             <h1 className="text-gray-600 font-bold">Add New</h1>
-
           </div>
         </div>
       </div>

@@ -7,16 +7,14 @@ import { useSelector } from "react-redux";
 import { useDeleteUserFromTeamMutation } from "../api/ReduxApiHandler";
 
 export default function UserBadge({ userIn }) {
-  console.log(userIn);
-
   const activeTeamId = useSelector((state) => state.activeTeam.team);
   const [deleteUserFromTeam] = useDeleteUserFromTeamMutation();
   const userId = userIn.internalUserId;
-  console.log("ID: ", userId);
+
   const handleDeleteUser = () => {
     deleteUserFromTeam({ teamId: activeTeamId, internalUserId: userId });
   };
-  console.log(activeTeamId, userId);
+
   const user = {
     name: "Nicholas Gendron",
     email: "jdoe@kanban.com",
@@ -41,8 +39,7 @@ export default function UserBadge({ userIn }) {
           </div>
           <br />
           <h2>{user.jobTitle}</h2>
-          <div className="flex flex-row justify-evenly ">
-          </div>
+          <div className="flex flex-row justify-evenly "></div>
         </div>
       </div>
       <div className="flex justify-end">

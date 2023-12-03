@@ -15,10 +15,8 @@ export default function AddNewTeamBadge() {
   useEffect(() => {
     if (data) {
       setTeamData(data);
-      console.log(data);
-      const teamNames = data.map((team) => team.teamName);
 
-      console.log(teamNames);
+      const teamNames = data.map((team) => team.teamName);
     }
   }, [data]);
 
@@ -33,7 +31,7 @@ export default function AddNewTeamBadge() {
       boardDescription: projectDescription,
       teamId: selectedTeamId,
     };
-    console.log(payload);
+
     newBoard(payload);
 
     setProjectName("");
@@ -51,7 +49,6 @@ export default function AddNewTeamBadge() {
           <div className="flex flex-row items-center space-x-3">
             <h1 className="text-gray-600 text-2xl">&#8853;</h1>
             <h1 className="text-gray-600 font-bold">Add New</h1>
-
           </div>
         </div>
       </div>
