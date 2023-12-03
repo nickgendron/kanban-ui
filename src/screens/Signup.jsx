@@ -21,7 +21,7 @@ const Signup = () => {
           minLength={5}
           iconSize={20}
           value={password || ""}
-          valueAgain={passwordCheck || ""}
+          valueAgain={passwordCheck || ""} 
           messages={{
             minLength: "password must be at least 8 characters.",
             specialChar: "password must contain 1 special character.",
@@ -78,10 +78,10 @@ const Signup = () => {
     e.preventDefault();
 
     if (isPasswordValid) {
-      
-      
-      
-      
+      console.log(firstName);
+      console.log(lastName);
+      console.log(email);
+      console.log(password);
 
       const payload = {
         firstName: firstName,
@@ -91,15 +91,15 @@ const Signup = () => {
       };
       KanbanApi.signup(payload)
         .then((res) => {
-          
+          console.log(res);
           // sessionStorage.setItem("accessToken", res.accessToken);
 
           navigate("/")
         })
-        .catch((err) => 
+        .catch((err) => console.log(err));
       //router.push("/");
     } else {
-      
+      console.log("Password does not meet requirements");
     }
   }
 

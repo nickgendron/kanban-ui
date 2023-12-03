@@ -14,27 +14,27 @@ export default function Login() {
   function handleLoginAction(e) {
     e.preventDefault();
 
-    
-    
+    console.log(email);
+    console.log(password);
     const payload = {
       email: email,
       password: password,
     };
-    
+    console.log(payload);
     KanbanApi.login(payload)
       .then((res) => {
-        
+        console.log(res);
 
         
         dispatch(setAuthenticated(true));
         navigate("/");
       })
-      .catch((err) => 
+      .catch((err) => console.log(err));
     // axios
     //   .post("http://localhost:5093/api/user/login", payload)
     //   .then((response) => {
     //     // Handle the successful response
-    //     
+    //     console.log("Response:", response.data);
     //   })
     //   .catch((error) => {
     //     // Handle errors
